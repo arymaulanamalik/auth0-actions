@@ -13,5 +13,11 @@ actions:
     supported_triggers:
       - id: send-phone-message
         version: v2
+  - name: twilio-sms-second-api
+    code: ./scripts/actions/twilio-second-api.js
+    runtime: node18-actions
+    supported_triggers:
+      - id: send-phone-message
+        version: v2
     
     
