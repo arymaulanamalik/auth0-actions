@@ -22,4 +22,4 @@ jobs:
     - name: Import changes to the Auth0 main account
       env:
         AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_SECRET }}
-      run: npm run import-yaml:main
+      run: npm run export-dir:main
