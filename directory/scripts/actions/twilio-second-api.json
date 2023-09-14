@@ -1,0 +1,11 @@
+{
+    "name": "twilio-sms-second-api",
+    "code": "./directory/scripts/actions/twilio-second-api.js",
+    "runtime": "node18-actions",
+    "supported_triggers": [
+      {
+        "id": "send-phone-message",
+        "version": "v2"
+      }
+    ]
+}
