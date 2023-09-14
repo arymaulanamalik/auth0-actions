@@ -60,7 +60,7 @@ exports.onExecuteSendPhoneMessage = async (event, api) => {
                             console.log(err);
                           });
                     } else {
-                        console.log("message sent \n", gMessage)
+                        console.log("message sent yaml \n", gMessage)
                     }
                 });
             }, 500);
