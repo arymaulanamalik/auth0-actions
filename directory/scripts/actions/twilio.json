@@ -1,6 +1,6 @@
 {
     "name": "twilio-sms",
-    "code": "./twilio.js",
+    "code": "./directory/scripts/actions/twilio.js",
     "runtime": "node18-actions",
     "supported_triggers": [
       {

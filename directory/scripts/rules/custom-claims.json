@@ -1,6 +1,6 @@
 {
     "name": "custom-claims",
-    "script": "./custom-claims.js",
+    "script": "./directory/scripts/rules/custom-claims.js",
     "stage": "login_success",
     "enabled": true,
     "order": 1
