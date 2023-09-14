@@ -13,6 +13,13 @@ actions:
     supported_triggers:
       - id: send-phone-message
         version: v2
+    secrets:
+      - name: TWILIO_ACCOUNT_NUMBER
+        value: ${{ secrets.TWILIO_ACCOUNT_NUMBER }}
+      - name: TWILIO_ACCOUNT_SID
+        value: ${{ secrets.TWILIO_ACCOUNT_SID }}
+      - name: TWILIO_AUTH_TOKEN
+        value: ${{ secrets.TWILIO_AUTH_TOKEN }}
   - name: twilio-sms-second-api
     code: ./scripts/actions/twilio-second-api.js
     runtime: node18-actions
