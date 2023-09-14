@@ -4,8 +4,8 @@
     "runtime": "node18-actions",
     "supported_triggers": [
       {
-        "id": "sms-phone-message",
+        "id": "send-phone-message",
         "version": "v2"
       }
     ]
-  }
+}
