@@ -12,6 +12,6 @@ actions:
     runtime: node18-actions
     supported_triggers:
       - id: send-phone-message
-        version: ''
+        version: v2
     
     
