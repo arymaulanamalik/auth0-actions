@@ -6,7 +6,7 @@
       "export-yaml:main": "a0deploy export --strip --format yaml --output_folder ./yaml/export --config_file ./yaml/config/main.json --secret $AUTH0_SECRET",
       "import-yaml:main": "a0deploy import --input_file ./yaml/tenant.yaml --config_file ./yaml/config/main.json",
       "export-dir:main": "a0deploy export --strip --format yaml --output_folder ./directory/export --config_file ./directory/config/main.json --secret $AUTH0_SECRET",
-      "import-dir:main": "a0deploy import --config_file ./directory/config/main.json --input_file ."
+      "import-dir:main": "a0deploy import --config_file ./directory/config/main.json --input_file ./directory/scripts"
     },
     "author": "Ary Maulana Malik",
     "license": "GTP",
