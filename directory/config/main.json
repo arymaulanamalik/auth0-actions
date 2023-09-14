@@ -9,7 +9,7 @@
     ],
     "API_IDENTIFIER": "https://dev-6igo80cinpr50gbd.us.auth0.com/api/v2/"
   },
-  "AUTH0_INCLUDED_ONLY": ["actions"],
+  "AUTH0_INCLUDED_ONLY": ["rules"],
   "EXCLUDED_PROPS": {
     "clients": [
       "client_secret"
