@@ -1,0 +1,17 @@
+---
+rules:
+  - name: custom-claims
+    script: ./scripts/rules/custom-claims.js
+    stage: login_success
+    enabled: true
+    order: 1
+
+actions:
+  - name: twilio-sms
+    code: ./scripts/actions/twilio.js
+    runtime: node18-actions
+    supported_triggers:
+      - id: send-phone-message
+        version: ''
+    
+    
