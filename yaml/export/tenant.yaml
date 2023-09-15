@@ -1,0 +1,447 @@
+rules:
+  - name: custom-claims
+    script: ./rules/custom-claims.js
+    stage: login_success
+    enabled: true
+    order: 1
+rulesConfigs: []
+hooks: []
+pages: []
+resourceServers:
+  - name: testing
+    identifier: http://test.com
+    allow_offline_access: false
+    scopes:
+      - value: read:test
+        description: test
+    signing_alg: RS256
+    skip_consent_for_verifiable_first_party_clients: true
+    token_lifetime: 86400
+    token_lifetime_for_web: 7200
+clients:
+  - name: API Explorer Application
+    app_type: non_interactive
+    cross_origin_auth: false
+    custom_login_page_on: true
+    grant_types:
+      - client_credentials
+    is_first_party: true
+    is_token_endpoint_ip_header_trusted: false
+    jwt_configuration:
+      alg: RS256
+      lifetime_in_seconds: 36000
+      secret_encoded: false
+    oidc_conformant: true
+    refresh_token:
+      expiration_type: non-expiring
+      leeway: 0
+      infinite_token_lifetime: true
+      infinite_idle_token_lifetime: true
+      token_lifetime: 31557600
+      idle_token_lifetime: 2592000
+      rotation_type: non-rotating
+    sso_disabled: false
+    token_endpoint_auth_method: client_secret_post
+  - name: Auth0 Management API (Test Application)
+    app_type: non_interactive
+    cross_origin_auth: false
+    custom_login_page_on: true
+    grant_types:
+      - client_credentials
+    is_first_party: true
+    is_token_endpoint_ip_header_trusted: false
+    jwt_configuration:
+      alg: RS256
+      lifetime_in_seconds: 36000
+      secret_encoded: false
+    oidc_conformant: true
+    refresh_token:
+      expiration_type: non-expiring
+      leeway: 0
+      infinite_token_lifetime: true
+      infinite_idle_token_lifetime: true
+      token_lifetime: 31557600
+      idle_token_lifetime: 2592000
+      rotation_type: non-rotating
+    sso_disabled: false
+    token_endpoint_auth_method: client_secret_post
+  - name: DEPLOY CLI
+    app_type: non_interactive
+    cross_origin_auth: false
+    custom_login_page_on: true
+    grant_types:
+      - client_credentials
+    is_first_party: true
+    is_token_endpoint_ip_header_trusted: false
+    jwt_configuration:
+      alg: RS256
+      lifetime_in_seconds: 36000
+      secret_encoded: false
+    oidc_conformant: true
+    refresh_token:
+      expiration_type: non-expiring
+      leeway: 0
+      infinite_token_lifetime: true
+      infinite_idle_token_lifetime: true
+      token_lifetime: 31557600
+      idle_token_lifetime: 2592000
+      rotation_type: non-rotating
+    sso_disabled: false
+    token_endpoint_auth_method: client_secret_post
+  - name: Default App
+    callbacks: []
+    cross_origin_auth: false
+    custom_login_page_on: true
+    grant_types:
+      - authorization_code
+      - implicit
+      - refresh_token
+      - client_credentials
+    is_first_party: true
+    is_token_endpoint_ip_header_trusted: false
+    jwt_configuration:
+      alg: RS256
+      lifetime_in_seconds: 36000
+      secret_encoded: false
+    oidc_conformant: true
+    refresh_token:
+      expiration_type: non-expiring
+      leeway: 0
+      infinite_token_lifetime: true
+      infinite_idle_token_lifetime: true
+      token_lifetime: 2592000
+      idle_token_lifetime: 1296000
+      rotation_type: non-rotating
+    sso_disabled: false
+  - name: testing (Test Application)
+    app_type: non_interactive
+    cross_origin_auth: false
+    custom_login_page_on: true
+    grant_types:
+      - client_credentials
+    is_first_party: true
+    is_token_endpoint_ip_header_trusted: false
+    jwt_configuration:
+      alg: RS256
+      lifetime_in_seconds: 36000
+      secret_encoded: false
+    oidc_conformant: true
+    refresh_token:
+      expiration_type: non-expiring
+      leeway: 0
+      infinite_token_lifetime: true
+      infinite_idle_token_lifetime: true
+      token_lifetime: 31557600
+      idle_token_lifetime: 2592000
+      rotation_type: non-rotating
+    sso_disabled: false
+    token_endpoint_auth_method: client_secret_post
+databases:
+  - name: Username-Password-Authentication
+    strategy: auth0
+    enabled_clients:
+      - API Explorer Application
+      - Auth0 Management API (Test Application)
+      - Default App
+      - DEPLOY CLI
+      - testing (Test Application)
+    is_domain_connection: false
+    options:
+      mfa:
+        active: true
+        return_enroll_settings: true
+      passwordPolicy: good
+      strategy_version: 2
+      brute_force_protection: true
+    realms:
+      - Username-Password-Authentication
+connections:
+  - name: google-oauth2
+    strategy: google-oauth2
+    enabled_clients:
+      - API Explorer Application
+      - Auth0 Management API (Test Application)
+      - Default App
+      - DEPLOY CLI
+      - testing (Test Application)
+    is_domain_connection: false
+    options:
+      email: true
+      scope:
+        - email
+        - profile
+      profile: true
+tenant:
+  enabled_locales:
+    - en
+  flags:
+    revoke_refresh_token_grant: false
+    disable_clickjack_protection_headers: false
+  sandbox_version: '18'
+emailProvider: {}
+emailTemplates: []
+clientGrants:
+  - client_id: API Explorer Application
+    audience: https://dev-6igo80cinpr50gbd.us.auth0.com/api/v2/
+    scope:
+      - read:client_grants
+      - create:client_grants
+      - delete:client_grants
+      - update:client_grants
+      - read:users
+      - update:users
+      - delete:users
+      - create:users
+      - read:users_app_metadata
+      - update:users_app_metadata
+      - delete:users_app_metadata
+      - create:users_app_metadata
+      - read:user_custom_blocks
+      - create:user_custom_blocks
+      - delete:user_custom_blocks
+      - create:user_tickets
+      - read:clients
+      - update:clients
+      - delete:clients
+      - create:clients
+      - read:client_keys
+      - update:client_keys
+      - delete:client_keys
+      - create:client_keys
+      - read:connections
+      - update:connections
+      - delete:connections
+      - create:connections
+      - read:resource_servers
+      - update:resource_servers
+      - delete:resource_servers
+      - create:resource_servers
+      - read:device_credentials
+      - update:device_credentials
+      - delete:device_credentials
+      - create:device_credentials
+      - read:rules
+      - update:rules
+      - delete:rules
+      - create:rules
+      - read:rules_configs
+      - update:rules_configs
+      - delete:rules_configs
+      - read:hooks
+      - update:hooks
+      - delete:hooks
+      - create:hooks
+      - read:actions
+      - update:actions
+      - delete:actions
+      - create:actions
+      - read:email_provider
+      - update:email_provider
+      - delete:email_provider
+      - create:email_provider
+      - blacklist:tokens
+      - read:stats
+      - read:insights
+      - read:tenant_settings
+      - update:tenant_settings
+      - read:logs
+      - read:logs_users
+      - read:shields
+      - create:shields
+      - update:shields
+      - delete:shields
+      - read:anomaly_blocks
+      - delete:anomaly_blocks
+      - update:triggers
+      - read:triggers
+      - read:grants
+      - delete:grants
+      - read:guardian_factors
+      - update:guardian_factors
+      - read:guardian_enrollments
+      - delete:guardian_enrollments
+      - create:guardian_enrollment_tickets
+      - read:user_idp_tokens
+      - create:passwords_checking_job
+      - delete:passwords_checking_job
+      - read:custom_domains
+      - delete:custom_domains
+      - create:custom_domains
+      - update:custom_domains
+      - read:email_templates
+      - create:email_templates
+      - update:email_templates
+      - read:mfa_policies
+      - update:mfa_policies
+      - read:roles
+      - create:roles
+      - delete:roles
+      - update:roles
+      - read:prompts
+      - update:prompts
+      - read:branding
+      - update:branding
+      - delete:branding
+      - read:log_streams
+      - create:log_streams
+      - delete:log_streams
+      - update:log_streams
+      - create:signing_keys
+      - read:signing_keys
+      - update:signing_keys
+      - read:limits
+      - update:limits
+      - create:role_members
+      - read:role_members
+      - delete:role_members
+      - read:entitlements
+      - read:attack_protection
+      - update:attack_protection
+      - read:organizations
+      - update:organizations
+      - create:organizations
+      - delete:organizations
+      - create:organization_members
+      - read:organization_members
+      - delete:organization_members
+      - create:organization_connections
+      - read:organization_connections
+      - update:organization_connections
+      - delete:organization_connections
+      - create:organization_member_roles
+      - read:organization_member_roles
+      - delete:organization_member_roles
+      - create:organization_invitations
+      - read:organization_invitations
+      - delete:organization_invitations
+      - read:organizations_summary
+      - create:actions_log_sessions
+      - create:authentication_methods
+      - read:authentication_methods
+      - update:authentication_methods
+      - delete:authentication_methods
+      - read:scim_config
+      - create:scim_config
+      - update:scim_config
+      - delete:scim_config
+      - create:scim_token
+      - read:scim_token
+      - delete:scim_token
+      - read:client_credentials
+      - create:client_credentials
+      - update:client_credentials
+      - delete:client_credentials
+  - client_id: Auth0 Management API (Test Application)
+    audience: https://dev-6igo80cinpr50gbd.us.auth0.com/api/v2/
+    scope: []
+  - client_id: Default App
+    audience: https://dev-6igo80cinpr50gbd.us.auth0.com/api/v2/
+    scope:
+      - create:actions
+      - update:actions
+  - client_id: testing (Test Application)
+    audience: http://test.com
+    scope: []
+guardianFactors:
+  - name: duo
+    enabled: false
+  - name: email
+    enabled: false
+  - name: otp
+    enabled: false
+  - name: push-notification
+    enabled: false
+  - name: recovery-code
+    enabled: false
+  - name: sms
+    enabled: true
+  - name: webauthn-platform
+    enabled: false
+  - name: webauthn-roaming
+    enabled: false
+guardianFactorProviders:
+  - name: sms
+    auth_token: qeqweqwe
+    from: '0812394124'
+    messaging_service_sid: null
+    provider: twilio
+    sid: '1123123'
+guardianFactorTemplates: []
+guardianPolicies:
+  policies: []
+guardianPhoneFactorSelectedProvider:
+  provider: twilio
+guardianPhoneFactorMessageTypes:
+  message_types:
+    - sms
+roles: []
+branding:
+  templates: []
+prompts:
+  customText: {}
+  universal_login_experience: new
+migrations: {}
+actions:
+  - name: twilio-sms
+    code: ./actions/twilio-sms/code.js
+    dependencies: []
+    deployed: false
+    runtime: node18-actions
+    secrets:
+      - name: TWILIO_ACCOUNT_NUMBER
+      - name: TWILIO_ACCOUNT_SID
+      - name: TWILIO_AUTH_TOKEN
+    status: built
+    supported_triggers:
+      - id: send-phone-message
+        version: v2
+  - name: twilio-sms-second-api
+    code: ./actions/twilio-sms-second-api/code.js
+    dependencies: []
+    deployed: false
+    runtime: node18-actions
+    secrets:
+      - name: TWILIO_ACCOUNT_NUMBER
+      - name: TWILIO_ACCOUNT_SID
+      - name: TWILIO_AUTH_TOKEN
+    status: built
+    supported_triggers:
+      - id: send-phone-message
+        version: v2
+triggers: {}
+organizations:
+  - name: testing
+    connections: []
+    display_name: asdf
+attackProtection:
+  breachedPasswordDetection:
+    enabled: false
+    shields: []
+    admin_notification_frequency: []
+    method: standard
+    stage:
+      pre-user-registration:
+        shields: []
+  bruteForceProtection:
+    enabled: true
+    shields:
+      - block
+      - user_notification
+    mode: count_per_identifier_and_ip
+    allowlist: []
+    max_attempts: 10
+  suspiciousIpThrottling:
+    enabled: true
+    shields:
+      - admin_notification
+      - block
+    allowlist: []
+    stage:
+      pre-login:
+        max_attempts: 100
+        rate: 864000
+      pre-user-registration:
+        max_attempts: 50
+        rate: 1200
+logStreams: []
+themes: []
